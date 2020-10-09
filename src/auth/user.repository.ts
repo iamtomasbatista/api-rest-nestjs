@@ -13,10 +13,10 @@ export class UserRepository extends Repository<User> {
     const user = new User();      // 💻 Create a constructor in User entity 
     user.username = username;     // const user = new User({ username, password }) Looks more elegant
     user.salt = await bcrypt.genSalt();
-    user.password = await this.hashPassword(password, user.salt);     // Try the await inside de function!!!
+    user.password = await this.hashPassword(password, user.salt);     // 💻 Try the await inside de function!!!
 
     try {
-      await user.save();            // 📝NestJS returns the proper status even when we are not explicitly returning anything
+      await user.save();              // 📝NestJS returns the proper status even when we are not explicitly returning anything
     } catch (error) {
       if (error.code === '23505') {   // 📝Postgres 23505 is the Postgres error code for unique_violation. https://www.postgresql.org/docs/12/errcodes-appendix.html
         throw new ConflictException('Username already exists');
