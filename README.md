@@ -1,9 +1,9 @@
 ---
-💻: An improvement or TODO
-📝[NestJS | ES6 | TS | ...] : An explanation related to the framework, language, etc we are learning
-❓[NestJS | ...]: An open question
-🤓: A general Software Engineering consideration
-📍[ES6 | ...] : A language feature
+💻: Improvement or TODO
+📝: Explanation related to the framework, language, etc we are learning. [NestJS | ES6 | TS | ...]
+❓: Open question. [NestJS | ...]
+🤓: General Software Engineering consideration
+📍 : Language feature. [ES6 | ...]
 ---
 
 ## Description
