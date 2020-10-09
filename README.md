@@ -36,11 +36,12 @@ $ npm run test:cov
 
 ## Comment Tags
 
----
+```
 💻: Improvement or TODO.
 📝[NestJS | ES6 | TS | ...] : Explanation related to the framework, language, etc we are learning.
 ❓[NestJS | ...]: Open question.
 🤓: General Software Engineering consideration.
 📍[ES6 | ...] : Language feature.
----
+```
+
 
