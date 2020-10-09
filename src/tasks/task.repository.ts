@@ -16,7 +16,7 @@ export class TaskRepository extends Repository<Task> {
     task.status = TaskStatus.OPEN;
     await task.save();
 
-    return task;      // 🤓CLEAN Is a good practice to return the resource created
+    return task;      // 🤓 Is a good practice to return the resource created
   }
 
   async getTasks(filterDto: GetTasksFilterDto): Promise<Task[]> {

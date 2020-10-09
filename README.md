@@ -33,3 +33,14 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
+
+## Comment Tags
+
+---
+💻: An improvement or TODO
+📝[NestJS | ES6 | TS | ...] : An explanation related to the framework, language, etc we are learning
+❓[NestJS | ...]: An open question
+🤓: A general Software Engineering consideration
+📍[ES6 | ...] : A language feature
+---
+
