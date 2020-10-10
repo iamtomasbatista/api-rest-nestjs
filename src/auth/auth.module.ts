@@ -2,18 +2,21 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import * as config from 'config';
 import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 import { UserRepository } from './user.repository';
 
+const jwtConfig = config.get('jwt');
+
 @Module({
   imports: [                                                   
-    PassportModule.register({ defaultStrategy: 'jwt' }),      // 💻 All this config objects must be located in other place 
-    JwtModule.register({                                      // 💻 Follow Mosh Node.js technique to manage sensitive using environment variables
-      secret: 'topSecret',                                    // 📝NestJS JwtModule exports a JwtService
+    PassportModule.register({ defaultStrategy: 'jwt' }),      
+    JwtModule.register({                                      
+      secret: process.env.JWT_SECRET || jwtConfig.secret,                                 
       signOptions: {
-        expiresIn: 3600        
+        expiresIn: jwtConfig.expiresIn        
       }
     }),
     TypeOrmModule.forFeature([UserRepository])      // 📝NestJS creates the correspondly table in the DB at this time
