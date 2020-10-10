@@ -1,2 +1,5 @@
 db: 
   synchronize: false
+
+server:   
+  origin: http://iamtomasbatista-uiseed-react.s3-website.eu-central-1.amazonaws.com
