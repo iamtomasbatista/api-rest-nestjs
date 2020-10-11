@@ -19,8 +19,8 @@ export class TasksService {
   }
 
   async getTaskById(id: number, user: User): Promise<Task> {
-    const found = await this.taskRepository.findOne({ where: { id, userId: user.id } });
-    if (!found) throw new NotFoundException(`Task with ${id} not found`);     // 📝NestJS. We are not caught this exception in this scope, so the exception will scale up to the TaskController.getTaskById    
+    const found = await this.taskRepository.findOne({ where: { id, userId: user.id } });      // 📝ES6 findOne returns null when it not found any entry, it not reject the Promise. When a fn that returns a Promise throws an exception, the Promise returned rejects !
+    if (!found) throw new NotFoundException(`Task with ${id} not found`);     // 📝NestJS We are not caught this exception in this scope, so the exception will scale up to the TaskController.getTaskById    
     return found;                                                             // TaskController.getTaskById are not caught the exception neither, so the exception scale up to the NestJS 
   }                                                                           // NestJS catch the exception and creates an HTTP Response accordingly
 

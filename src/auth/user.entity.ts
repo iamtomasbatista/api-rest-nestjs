@@ -1,6 +1,6 @@
 import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn, Unique } from "typeorm";
 import * as bcrypt from 'bcryptjs';
-import { Task } from "src/tasks/task.entity";
+import { Task } from "../tasks/task.entity";
 
 @Entity()
 @Unique(['username'])     // 📝NestJS This validation takes place at DB level
