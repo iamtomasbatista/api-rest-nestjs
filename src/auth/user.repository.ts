@@ -10,8 +10,8 @@ export class UserRepository extends Repository<User> {
   async signUp(authCredentialsDto: AuthCredentialsDto): Promise<void> {
     const { username, password } = authCredentialsDto;      // 📍ES6 Object Destructuring
     
-    const user = new User();      // 💻 Create a constructor in User entity 
-    user.username = username;     // const user = new User({ username, password }) Looks more elegant
+    const user = this.create();     // 💻 Try create a constructor in User entity 
+    user.username = username;
     user.salt = await bcrypt.genSalt();
     user.password = await this.hashPassword(password, user.salt);     // 💻 Try the await inside de function!!!
 

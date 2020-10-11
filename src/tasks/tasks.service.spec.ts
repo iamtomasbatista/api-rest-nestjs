@@ -1,6 +1,5 @@
 import { NotFoundException } from '@nestjs/common';
 import { Test } from '@nestjs/testing'
-import { userInfo } from 'os';
 import { GetTasksFilterDto } from './dto/get-tasks-filter.dto';
 import { TaskStatus } from './task-status.enum';
 import { TaskRepository } from './task.repository';
@@ -56,9 +55,9 @@ describe('TasksService', () => {
       expect(taskRepository.findOne).toHaveBeenCalledWith({ where: { id: 1, userId: mockUser.id }});
     });
 
-    it('throws an error as task is not found', () => {
+    it('throws an error as task is not found', async () => {
       taskRepository.findOne.mockResolvedValue(null);
-      expect(tasksService.getTaskById(1, mockUser)).rejects.toThrow(NotFoundException);
+      await expect(tasksService.getTaskById(1, mockUser)).rejects.toThrow(NotFoundException);
     });    
   });
 
@@ -80,9 +79,9 @@ describe('TasksService', () => {
       expect(taskRepository.delete).toHaveBeenCalledWith({ id: 1, userId: mockUser.id }); 
     });
 
-    it('throws an error as task could not be found', () => {
+    it('throws an error as task could not be found', async () => {
       taskRepository.delete.mockResolvedValue({ affected: 0 });
-      expect(tasksService.deleteTask(1, mockUser)).rejects.toThrow(NotFoundException);
+      await expect(tasksService.deleteTask(1, mockUser)).rejects.toThrow(NotFoundException);
     });
   });
 
